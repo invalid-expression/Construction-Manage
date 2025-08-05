@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'ConstructionManage';
-  SelectedSection = 1;
+  SelectedSection = 2;
 
   ShowSection(){
     if (this.SelectedSection == 1) {

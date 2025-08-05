@@ -1,17 +1,20 @@
-<table>
+<table border="1" cellspacing="0" cellpadding="10">
+  <thead>
     <tr>
-        <th>Sampling Time</th>
-        <th>Project Name</th>
-        <th>Construction Count</th>
-        <th>Is Construction Completed</th>
-        <th>Length of The Road</th>
+      <th>Sampling Time</th>
+      <th>Project Name</th>
+      <th>Construction Count</th>
+      <th>Is Construction Completed</th>
+      <th>Length of the road</th>
     </tr>
-
-    <tr>
-        <td>12-28-24</td>
-        <td>Road Construction 1</td>    
-        <td>2</td>
-        <td>False</td>
-        <td>5:6</td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of observationData?.Datas">
+      <td>{{ record.SamplingTime | date:'dd-MM-yyyy hh:mm:ss a' }}</td>
+      <td>{{ getProperty(record, 'Project Name') }}</td>
+      <td>{{ getProperty(record, 'Construction Count') }}</td>
+      <td>{{ getProperty(record, 'Is Construction Completed') }}</td>
+      <td>{{ getProperty(record, 'Length of the road') }}</td>
     </tr>
+  </tbody>
 </table>
