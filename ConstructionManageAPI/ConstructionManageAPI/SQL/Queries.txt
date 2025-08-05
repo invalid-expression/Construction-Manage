@@ -1,0 +1,20 @@
+CREATE DATABASE Construction
+
+CREATE TABLE Observations (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100)
+);
+
+CREATE TABLE ConstructionRecords (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    ObservationId INT FOREIGN KEY REFERENCES Observations(Id),
+    SamplingTime DATETIME
+);
+
+CREATE TABLE Properties (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    ConstructionRecordId INT FOREIGN KEY REFERENCES ConstructionRecords(Id),
+    Label NVARCHAR(100),
+    Value NVARCHAR(MAX)
+);
+
