@@ -16,7 +16,7 @@ namespace ConstructionManageAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Observation>>> GetDepartment()
+        public async Task<ActionResult<IEnumerable<ObservationEntity>>> GetDepartment()
         {
             var data = await _observation.GetObservation();
             return Ok(data);

@@ -4,6 +4,6 @@ namespace ConstructionManageAPI.Interface
 {
     public interface IObservation
     {
-        Task<IEnumerable<Observation>> GetObservation();
+        Task<IEnumerable<ObservationEntity>> GetObservation();
     }
 }

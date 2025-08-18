@@ -2,11 +2,11 @@
 
 namespace ConstructionManageAPI.Model
 {
-    public class Observation
+    public class ObservationEntity
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; } = string.Empty;
-        public List<ConstructionRecord>? Datas { get; set; } 
+        public List<DatasEntity>? ConstructionRecordEntities { get; set; }      
     }
 }

@@ -1,20 +1,36 @@
-CREATE DATABASE Construction
+Create Database ConstructionAPI
 
-CREATE TABLE Observations (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    Name NVARCHAR(100)
+CREATE TABLE ObservationEntity(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	Name VARCHAR(100)
+); 
+
+CREATE TABLE DatasEntity(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	SamplingTime DATETIME,
+	ObservationEntityID INT FOREIGN KEY REFERENCES ObservationEntity(ID)
 );
 
-CREATE TABLE ConstructionRecords (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    ObservationId INT FOREIGN KEY REFERENCES Observations(Id),
-    SamplingTime DATETIME
+CREATE TABLE PropertiesEntity(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	[Label] VARCHAR(100),
+	[Value] VARCHAR(100),
+	DatasID INT FOREIGN KEY REFERENCES DatasEntity(ID)
 );
 
-CREATE TABLE Properties (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    ConstructionRecordId INT FOREIGN KEY REFERENCES ConstructionRecords(Id),
-    Label NVARCHAR(100),
-    Value NVARCHAR(MAX)
-);
+INSERT INTO ObservationEntity(Name) VALUES('New Observation');
+
+INSERT INTO DatasEntity(SamplingTime, ObservationEntityID) VALUES(GETDATE(), 1);
+
+INSERT INTO PropertiesEntity(Label, Value, DatasID) VALUES 
+('Project Name', 'Road Construction 1', 1),
+('Construction Count', '40', 1),
+('Is Construction Complete', 'FALSE', 1),
+('Length of Road', '5.6', 1);
+
+
+
+
+
+
 

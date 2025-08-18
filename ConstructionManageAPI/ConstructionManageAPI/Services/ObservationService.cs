@@ -12,9 +12,26 @@ namespace ConstructionManageAPI.Services
         {
             _context = context;
         }
-        public async Task<IEnumerable<Observation>> GetObservation()
+        public async Task<IEnumerable<ObservationEntity>> GetObservation()
         {
-            var Data = await _context.Observations.Include(o => o.Datas).ThenInclude(d => d.Properties).ToListAsync();
+            var Data = await _context.ObservationEntity
+                .Select(x => new ObservationEntity
+                {
+                    ID = x.ID,
+                    Name = x.Name,
+                    ConstructionRecordEntities = x.ConstructionRecordEntities
+                    .Select(y => new DatasEntity
+                    {
+                        SamplingTime = y.SamplingTime,
+                        PropertyEntities = y.PropertyEntities
+                        .Select(z => new PropertyEntity
+                        {
+                            Label = z.Label,
+                            Value = z.Value
+                        }).ToList()
+                    }).ToList(),
+                }).ToListAsync();
+
             return Data;
         }
     }

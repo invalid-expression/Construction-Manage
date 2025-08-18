@@ -7,8 +7,8 @@ namespace ConstructionManageAPI.Context
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) {}
 
-        public DbSet<Observation> Observations { get; set; }
-        public DbSet<ConstructionRecord> ConstructionRecords { get; set; }
-        public DbSet<Property> Properties { get; set; }
+        public DbSet<ObservationEntity> ObservationEntity { get; set; }
+        public DbSet<DatasEntity> DatasEntity { get; set; }
+        public DbSet<PropertyEntity> PropertiesEntity { get; set; }
     }
 }
