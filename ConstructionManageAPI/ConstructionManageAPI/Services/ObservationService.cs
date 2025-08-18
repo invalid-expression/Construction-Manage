@@ -19,7 +19,7 @@ namespace ConstructionManageAPI.Services
                 {
                     ID = x.ID,
                     Name = x.Name,
-                    ConstructionRecordEntities = x.ConstructionRecordEntities
+                    Datas = x.Datas
                     .Select(y => new DatasEntity
                     {
                         SamplingTime = y.SamplingTime,

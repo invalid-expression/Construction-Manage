@@ -7,6 +7,6 @@ namespace ConstructionManageAPI.Model
         [Key]
         public int ID { get; set; }
         public string Name { get; set; } = string.Empty;
-        public List<DatasEntity>? ConstructionRecordEntities { get; set; }      
+        public List<DatasEntity>? Datas { get; set; }      
     }
 }
